@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# Autre
+
+
+wifi_info.h
