@@ -19,9 +19,10 @@
 ![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_2_air_quality/images/_2_air_quality.png?raw=true)
 
 
+![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_2_air_quality/images/1.png?raw=true)
+
 -------------------------------------
 ## Images ##
-![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_2_air_quality/images/1.png?raw=true)
 ![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_2_air_quality/images/2.png?raw=true)
 ![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_2_air_quality/images/3.png?raw=true)
 ![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_2_air_quality/images/4.png?raw=true)
