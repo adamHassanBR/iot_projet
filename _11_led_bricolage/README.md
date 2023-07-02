@@ -15,7 +15,7 @@
 
 -------------------------------------
 ## Schémas ##
-![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_11_led_bricolage/images/_11_led_bricolage.png.png?raw=true)
+![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_11_led_bricolage/images/_11_led_bricolage.png?raw=true)
 
 ![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_11_led_bricolage/images/10.png?raw=true)
 
