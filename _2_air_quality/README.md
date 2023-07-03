@@ -3,7 +3,7 @@
 -------------------------------------
 ## Description ##
   
-  Integration à l'environement HomeKit apple de mon capteur de qualité de l'air (température, humidité)
+Intégration à l'environnement HomeKit apple de mon capteur de qualité de l'air (température, humidité)
   
 
 -------------------------------------

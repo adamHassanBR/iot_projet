@@ -14,11 +14,19 @@
 * PLA (printing filament)
 
 -------------------------------------
-## Schémas ##
-![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_10_led_bricolage/images/_10_led_bricolage.png?raw=true)
 
-![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_10_led_bricolage/images/10.png?raw=true)
+## Schémas ##
+
+<img src="https://github.com/adamHassanBR/iot_projet/blob/main/_10_led_bricolage/images/_10_led_bricolage.png" style="width: 300px"/>
 
 -------------------------------------
-![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_10_led_bricolage/images/20.png?raw=true)
-![alt text](https://github.com/adamHassanBR/iot_projet/blob/main/_10_led_bricolage/images/30.png?raw=true)
+## Images ##
+
+### 1 ###
+<img src="https://github.com/adamHassanBR/iot_projet/blob/main/_10_led_bricolage/images/10.png" style="width: 300px"/>
+
+### 2 ###
+<img src="https://github.com/adamHassanBR/iot_projet/blob/main/_10_led_bricolage/images/20.png" style="width: 300px"/>
+
+### 3 ###
+<img src="https://github.com/adamHassanBR/iot_projet/blob/main/_10_led_bricolage/images/30.png" style="width: 300px"/>
