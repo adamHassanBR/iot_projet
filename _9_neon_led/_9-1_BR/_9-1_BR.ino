@@ -1,60 +1,61 @@
+/*
+ * Example05_WS2812_Neopixel.ino
+ *
+ *  Created on: 2020-10-01
+ *      Author: Juergen Fink
+ *	Thanks to all the other helpful people commenting here.
+ *
+ * This example allows to change brightness and color of a connected neopixel strip/matrix
+ *
+ * You should:
+ * 1. read and use the Example01_TemperatureSensor with detailed comments
+ *    to know the basic concept and usage of this library before other examples。
+ * 2. erase the full flash or call homekit_storage_reset() in setup()
+ *    to remove the previous HomeKit pairing storage and
+ *    enable the pairing with the new accessory of this new HomeKit example.
+ */
+
 
 #include <Arduino.h>
 #include <arduino_homekit_server.h>
+#include <Adafruit_NeoPixel.h>
 #include "wifi_info.h"
-
-#include <FastLED.h>
-
-#define LED_PIN     D1
-#define NUM_LEDS    300
-
-
-bool statut_white_static;
-bool statut_white_motion;
-bool statut_color_static;
-bool statut_color_motion;
-bool initialisation = true;
-
-CRGB leds[NUM_LEDS];
 
 #define LOG_D(fmt, ...)   printf_P(PSTR(fmt "\n") , ##__VA_ARGS__);
 
-void setup() 
-{
-  
+#define NEOPIN          2
+#define NUMPIXELS       64
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, NEOPIN, NEO_GRB + NEO_KHZ800);
+
+bool received_sat = false;
+bool received_hue = false;
+
+bool is_on = false;
+float current_brightness =  100.0;
+float current_sat = 0.0;
+float current_hue = 0.0;
+int rgb_colors[3];
+
+void setup() {
 	Serial.begin(115200);
-  FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
-	wifi_connect(); 
-	//homekit_storage_reset(); // to remove the previous HomeKit pairing storage when you first run this new HomeKit example
+	wifi_connect(); // in wifi_info.h
+
+  pixels.begin(); 
+  for(int i = 0; i < NUMPIXELS; i++)
+  {
+    pixels.setPixelColor(i, 0, 0, 0);
+  }
+  pixels.show();
+  delay(1000);
+	rgb_colors[0] = 255;
+  rgb_colors[1] = 255;
+  rgb_colors[2] = 255;
 	my_homekit_setup();
 }
-unsigned long previousMillis = 0;
 
-// Interval at which to blink (milliseconds)
-const long interval = 1000;
-void loop() 
-{
+void loop() {
 	my_homekit_loop();
 	delay(10);
-  if((statut_white_static == false) && (statut_white_motion == false) && (statut_color_static == false) && (statut_color_motion == false))
-  {
-    off();
-  }
-  
-  unsigned long currentMillis = millis(); 
-  if (currentMillis - previousMillis >= interval) 
-  {
-    previousMillis = currentMillis;
-    if (statut_color_motion) 
-    {
-      colorMotion();
-    }
-    
-    if (statut_white_motion) 
-    {
-      whiteMotion();
-    }
-  }
 }
 
 //==============================
@@ -62,198 +63,183 @@ void loop()
 //==============================
 
 // access your HomeKit characteristics defined in my_accessory.c
-extern "C" homekit_server_config_t config;
-extern "C" homekit_characteristic_t cha_switch_white_static;
-extern "C" homekit_characteristic_t cha_switch_white_motion;
-extern "C" homekit_characteristic_t cha_switch_color_static;
-extern "C" homekit_characteristic_t cha_switch_color_motion;
+
+extern "C" homekit_server_config_t accessory_config;
+extern "C" homekit_characteristic_t cha_on;
+extern "C" homekit_characteristic_t cha_bright;
+extern "C" homekit_characteristic_t cha_sat;
+extern "C" homekit_characteristic_t cha_hue;
 
 static uint32_t next_heap_millis = 0;
 
+void my_homekit_setup() {
 
-
-void cha_switch_white_static_setter(const homekit_value_t value) 
-{
-  statut_white_static = value.bool_value;
-  cha_switch_white_static.value.bool_value = statut_white_static;  //sync de la valeur
-
-  if(statut_white_static == true)
-  {
-    if(initialisation == true)
-    {
-       initalisation();
-       initialisation = false;
-    }
-      whiteStatic();
-  }
-   if(statut_white_static == false)
-  {
-    initialisation = true;
-  }
+  cha_on.setter = set_on;
+  cha_bright.setter = set_bright;
+  cha_sat.setter = set_sat;
+  cha_hue.setter = set_hue;
   
-}
-
-void cha_switch_white_motion_setter(const homekit_value_t value) 
-{
-  statut_white_motion = value.bool_value;
-  cha_switch_white_motion.value.bool_value = statut_white_motion;  //sync de la valeur
-
-  if(statut_white_motion == true)
-  {
-    if(initialisation == true)
-    {
-       initalisation();
-       initialisation = false;
-    }
-  }
-  if(statut_white_motion == false)
-  {
-    initialisation = true;
-  }
-  
-}
-
-
-
-
-
-void cha_switch_color_static_setter(const homekit_value_t value) 
-{
-  statut_color_static = value.bool_value;
-  cha_switch_color_static.value.bool_value = statut_color_static;  //sync de la valeur
-
-  if(statut_color_static == true)
-  {
-    if(initialisation == true)
-    {
-       initalisation();
-       initialisation = false;
-    }
-      colorStatic();
-  }
-  if(statut_color_static == false)
-  {
-    initialisation = true;
-  }
- 
-}
-
-void cha_switch_color_motion_setter(const homekit_value_t value) 
-{
-  statut_color_motion = value.bool_value;
-  cha_switch_color_motion.value.bool_value = statut_color_motion;  //sync de la valeur
-
-  if(statut_color_motion == true)
-  {
-    if(initialisation == true)
-    {
-       initalisation();
-       initialisation = false;
-    }      
-  }
-  if(statut_color_motion == false)
-  {
-    initialisation = true;
-  }
-  
-}
-
-
-
-
-
-
-void my_homekit_setup() 
-{
-
-
-	cha_switch_white_static.setter = cha_switch_white_static_setter;
-  cha_switch_white_motion.setter = cha_switch_white_motion_setter;
-  cha_switch_color_static.setter = cha_switch_color_static_setter;
-  cha_switch_color_motion.setter = cha_switch_color_motion_setter;
-	arduino_homekit_setup(&config);
+	arduino_homekit_setup(&accessory_config);
 
 }
 
-void my_homekit_loop() 
-{
+void my_homekit_loop() {
 	arduino_homekit_loop();
 	const uint32_t t = millis();
-	if (t > next_heap_millis) 
-	{
+	if (t > next_heap_millis) {
 		// show heap info every 5 seconds
 		next_heap_millis = t + 5 * 1000;
-		LOG_D("Free heap: %d, HomeKit clients: %d", ESP.getFreeHeap(), arduino_homekit_connected_clients_count());
+		LOG_D("Free heap: %d, HomeKit clients: %d",
+				ESP.getFreeHeap(), arduino_homekit_connected_clients_count());
 
 	}
 }
 
+void set_on(const homekit_value_t v) {
+    bool on = v.bool_value;
+    cha_on.value.bool_value = on; //sync the value
 
-
-void initalisation()
-{
-  for (int i = 0; i < NUM_LEDS; i++) 
-   {
-        leds[i] = CRGB::White;
-        FastLED.show();
-        delay(10);
+    if(on) {
+        is_on = true;
+        Serial.println("On");
+    } else  {
+        is_on = false;
+        Serial.println("Off");
     }
+
+    updateColor();
 }
 
+void set_hue(const homekit_value_t v) {
+    Serial.println("set_hue");
+    float hue = v.float_value;
+    cha_hue.value.float_value = hue; //sync the value
 
-void whiteMotion()
+    current_hue = hue;
+    received_hue = true;
+    
+    updateColor();
+}
+
+void set_sat(const homekit_value_t v) {
+    Serial.println("set_sat");
+    float sat = v.float_value;
+    cha_sat.value.float_value = sat; //sync the value
+
+    current_sat = sat;
+    received_sat = true;
+    
+    updateColor();
+
+}
+
+void set_bright(const homekit_value_t v) {
+    Serial.println("set_bright");
+    int bright = v.int_value;
+    cha_bright.value.int_value = bright; //sync the value
+
+    current_brightness = bright;
+
+    updateColor();
+}
+
+void updateColor()
 {
-  for (int i = 0; i < 256; i++) 
+  if(is_on)
   {
-    for (int j = 0; j < NUM_LEDS; j++) 
-    {
-      leds[j] = CHSV(0, 0, i + j);
+   
+      if(received_hue && received_sat)
+      {
+        HSV2RGB(current_hue, current_sat, current_brightness);
+        received_hue = false;
+        received_sat = false;
+      }
+      
+      int b = map(current_brightness,0, 100,75, 255);
+      Serial.println(b);
+  
+      pixels.setBrightness(b);
+      for(int i = 0; i < NUMPIXELS; i++)
+      {
+  
+        pixels.setPixelColor(i, pixels.Color(rgb_colors[0],rgb_colors[1],rgb_colors[2]));
+  
+      }
+      pixels.show();
+
     }
-    FastLED.show();
-    delay(10);
+  else if(!is_on) //lamp - switch to off
+  {
+      Serial.println("is_on == false");
+      pixels.setBrightness(0);
+      for(int i = 0; i < NUMPIXELS; i++)
+      {
+        pixels.setPixelColor(i, pixels.Color(0,0,0));
+      }
+      pixels.show();
   }
 }
 
-void whiteStatic()
-{
-  for (int i = 0; i < NUM_LEDS; i++) 
-  {
+void HSV2RGB(float h,float s,float v) {
 
-    leds[i] = CRGB::White;
+  int i;
+  float m, n, f;
+
+  s/=100;
+  v/=100;
+
+  if(s==0){
+    rgb_colors[0]=rgb_colors[1]=rgb_colors[2]=round(v*255);
+    return;
   }
-   FastLED.show();
-}
 
+  h/=60;
+  i=floor(h);
+  f=h-i;
 
-void colorMotion()
-{
-   for (int i = 0; i < 256; i++) 
-   {
-        for (int j = 0; j < NUM_LEDS; j++) 
-        {
-            leds[j] = CHSV((i + j * 128 / NUM_LEDS) % 256 + 128, 255, 255);
-        }
-        FastLED.show();
-        delay(10);
-    }
-}
-
-void colorStatic()
-{
-  for (int i = 0; i < NUM_LEDS; i++) 
-  {
-        leds[i] = CHSV((i * 128 / NUM_LEDS) + 128, 255, 255);
-   }
-   FastLED.show();
-}
-
-
-void off()
-{
-  for (int i = 0; i < NUM_LEDS; i++) 
-  {
-
-    leds[i] = CRGB::Black;
+  if(!(i&1)){
+    f=1-f;
   }
-   FastLED.show();
+
+  m=v*(1-s);
+  n=v*(1-s*f);
+
+  switch (i) {
+
+    case 0: case 6:
+      rgb_colors[0]=round(v*255);
+      rgb_colors[1]=round(n*255);
+      rgb_colors[2]=round(m*255);
+    break;
+
+    case 1:
+      rgb_colors[0]=round(n*255);
+      rgb_colors[1]=round(v*255);
+      rgb_colors[2]=round(m*255);
+    break;
+
+    case 2:
+      rgb_colors[0]=round(m*255);
+      rgb_colors[1]=round(v*255);
+      rgb_colors[2]=round(n*255);
+    break;
+
+    case 3:
+      rgb_colors[0]=round(m*255);
+      rgb_colors[1]=round(n*255);
+      rgb_colors[2]=round(v*255);
+    break;
+
+    case 4:
+      rgb_colors[0]=round(n*255);
+      rgb_colors[1]=round(m*255);
+      rgb_colors[2]=round(v*255);
+    break;
+
+    case 5:
+      rgb_colors[0]=round(v*255);
+      rgb_colors[1]=round(m*255);
+      rgb_colors[2]=round(n*255);
+    break;
+  }
 }

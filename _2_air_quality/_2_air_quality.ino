@@ -22,7 +22,7 @@ void setup()
 	my_homekit_setup();
 }
 
-void loop() 
+void loop()   
 {
 	my_homekit_loop();
 	delay(10);
