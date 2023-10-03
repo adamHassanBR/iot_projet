@@ -4,7 +4,7 @@
 ## Description ##
   
   Intégration à l'Environnement HomeKit apple de qui décore et éclaire le mur de mon bureau de travail.
-  youtube link : https://www.youtube.com/watch?v=FOISE3Ifhgg
+  youtube link : https://youtube.com/shorts/FLN2diftWG0?feature=share
 
 -------------------------------------
 ## Matériels ##
