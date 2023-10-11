@@ -29,26 +29,26 @@ Bien que le projet soit fonctionnel, il est important de noter que des améliora
 
 ## Schémas ##
 
-<img src="https://github.com/adamHassanBR/iot_projet/tree/main/_11_mirror_connect/images/_11_mirror_connect.png" style="width: 300px"/>
+<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_11_mirror_connect/images/_11_mirror_connect.png" style="width: 300px"/>
 
 -------------------------------------
 ## Images ##
 
 ### 1 ###
-<img src="https://github.com/adamHassanBR/iot_projet/tree/main/_11_mirror_connect/images/1.jpg" style="width: 300px"/>
+<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_11_mirror_connect/images/1.png" style="width: 300px"/>
 
 ### 2 ###
-<img src="https://github.com/adamHassanBR/iot_projet/tree/main/_11_mirror_connect/images/2.jpg" style="width: 300px"/>
+<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_11_mirror_connect/images/2.png" style="width: 300px"/>
 
 ### 3 ###
-<img src="https://github.com/adamHassanBR/iot_projet/tree/main/_11_mirror_connect/images/3.jpg" style="width: 300px"/>
+<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_11_mirror_connect/images/3.png" style="width: 300px"/>
 
 ### 4 ###
-<img src="https://github.com/adamHassanBR/iot_projet/tree/main/_11_mirror_connect/images/4.jpg" style="width: 300px"/>
+<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_11_mirror_connect/images/4.png" style="width: 300px"/>
 
 ### 5 ###
-<img src="https://github.com/adamHassanBR/iot_projet/tree/main/_11_mirror_connect/images/5.jpg" style="width: 300px"/>
+<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_11_mirror_connect/images/5.png" style="width: 300px"/>
 
 ### 6 ###
-<img src="https://github.com/adamHassanBR/iot_projet/tree/main/_11_mirror_connect/images/6.jpg" style="width: 300px"/>
+<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_11_mirror_connect/images/6.png" style="width: 300px"/>
 
