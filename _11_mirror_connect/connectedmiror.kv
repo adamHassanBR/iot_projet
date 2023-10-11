@@ -1,0 +1,509 @@
+
+
+<IhmView>:
+    
+    orientation: 'vertical'
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'images/backgroundGradient.png'
+    
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.03
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.5
+            pos_hint: {'y': -0.3} 
+            Label:
+                id: heure_label
+                text: "heure"
+                font_size: 150
+                font_name: 'fonts/my_font.ttf'
+                color: 1,1,1,1
+                pos_hint: {'x': -0.25}
+
+            
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.5
+            pos_hint: {'x': 0.3, 'y': -0.3}  
+            Label:
+                id: date_label
+                text: "Date"
+                font_size: 62
+                font_name: 'fonts/my_font.ttf'
+                color: 1,1,1,1  
+        
+        
+
+
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.05
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.3
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.5
+            Label:
+                id: curent_temperature_label
+                text: "Temperature"
+                font_size: 150
+                font_name: 'fonts/my_font.ttf'
+                color: 1,1,1,1
+                pos_hint: {'x': 0.25}  
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.4
+            pos_hint: {'y': 0.15} 
+            Image:
+                id: curent_icone_image
+                allow_stretch: True
+                keep_ratio: False
+                source: 'icone'  
+                size_hint: None, None
+                size: 170, 170
+                pos_hint: {'x': -0.05, 'y': -1}  
+
+
+
+
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.05
+
+
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.2
+        
+            
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.1
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.26
+            
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.46, 'y': 0.45}
+                padding: 0, 10
+                Image:
+                    source: 'images/rain_icone.png'  
+                    size_hint: None, None
+                    size: 50, 50
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: curent_precipitation_label
+                    text: "curent_precipitation_label"
+                    font_size: 50
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: "Precipitation"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.26
+            
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.46, 'y': 0.45}
+                padding: 0, 10
+                Image:
+                    source: 'images/humidity_icone.png'  
+                    size_hint: None, None
+                    size: 50, 50
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: curent_humidity_label
+                    text: "curent_humidity_label"
+                    font_size: 50
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: "Humidity"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.26
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.46, 'y': 0.45}
+                padding: 0, 10
+                Image:
+                    source: 'images/wind_icone.png'  
+                    size_hint: None, None
+                    size: 50, 50
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: curent_wind_label
+                    text: "curent_wind_label"
+                    font_size: 50
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    text: "Wind Speed"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.1
+            
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.15
+        canvas.before:
+            Color:
+                rgba: 0xC5/255, 0xC5/255, 0xC5/255, 0.58  # Couleur grise (C5C5C5) avec une transparence de 58%
+            RoundedRectangle:
+                pos: self.x + 25, self.y  # Décaler le rectangle de 25 pixels vers la droite
+                size: self.width * 0.95, 3  # Largeur réduite à 95% de la largeur de BoxLayout, hauteur de 3 pixels
+                radius: [2, 2, 2, 2]  # Coins supérieurs arrondis (20, 20), coins inférieurs droits (0, 0)
+
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.05
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.3
+        padding: 2
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.014285
+
+        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.14285
+            
+             
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: plus_un_titre
+                    text: "plus_un_titre"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 22,22,22,0.73
+                    
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.30, 'y': 0.5}
+                padding: 35, 15                
+                Image:
+                    id: plus_un_icone_image
+                    source: 'plus_un_icone_image'  
+                    size_hint: None, None
+                    size: 50, 50
+            
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': -0.037}
+                pos_hint: {'y': 10}
+                Label:
+                    id: plus_un_temperature_label
+                    text: "plus_un_temperature_label"
+                    font_size: 45
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+            
+            
+
+
+            
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.14285
+            
+             
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: plus_deux_titre
+                    text: "plus_deux_titre"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 22,22,22,0.73
+                    
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.30, 'y': 0.5}
+                padding: 35, 15
+                
+                Image:
+                    id: plus_deux_icone_image
+                    source: 'plus_deux_icone_image'  
+                    size_hint: None, None
+                    size: 50, 50
+            
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': -0.037}
+                pos_hint: {'y': 10}
+                Label:
+                    id: plus_deux_temperature_label
+                    text: "plus_deux_temperature_label"
+                    font_size: 45
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+            
+            
+            
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.14285
+            
+             
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: plus_trois_titre
+                    text: "plus_trois_titre"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 22,22,22,0.73
+                    
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.30, 'y': 0.5}
+                padding: 35, 15
+                
+                Image:
+                    id: plus_trois_icone_image
+                    source: 'plus_trois_icone_image'  
+                    size_hint: None, None
+                    size: 50, 50
+            
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': -0.037}
+                pos_hint: {'y': 10}
+                Label:
+                    id: plus_trois_temperature_label
+                    text: "plus_trois_temperature_label"
+                    font_size: 45
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+            
+            
+        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.14285
+            
+             
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: plus_quatre_titre
+                    text: "plus_quatre_titre"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 22,22,22,0.73
+                    
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.30, 'y': 0.5}
+                padding: 35, 15
+                
+                Image:
+                    id: plus_quatre_icone_image
+                    source: 'plus_quatre_icone_image'  
+                    size_hint: None, None
+                    size: 50, 50
+            
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': -0.037}
+                pos_hint: {'y': 10}
+                Label:
+                    id: plus_quatre_temperature_label
+                    text: "plus_quatre_temperature_label"
+                    font_size: 45
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+            
+            
+            
+       
+            
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.14285
+            
+             
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: plus_cinq_titre
+                    text: "plus_cinq_titre"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 22,22,22,0.73
+                    
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.30, 'y': 0.5}
+                padding: 35, 15
+                
+                Image:
+                    id: plus_cinq_icone_image
+                    source: 'plus_cinq_icone_image'  
+                    size_hint: None, None
+                    size: 50, 50
+            
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': -0.037}
+                pos_hint: {'y': 10}
+                Label:
+                    id: plus_cinq_temperature_label
+                    text: "plus_cinq_temperature_label"
+                    font_size: 45
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+            
+            
+        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.14285
+            
+             
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: plus_six_titre
+                    text: "plus_six_titre"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 22,22,22,0.73
+                    
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.30, 'y': 0.5}
+                padding: 35, 15
+                
+                Image:
+                    id: plus_six_icone_image
+                    source: 'plus_six_icone_image'  
+                    size_hint: None, None
+                    size: 50, 50
+            
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': -0.037}
+                pos_hint: {'y': 10}
+                Label:
+                    id: plus_six_temperature_label
+                    text: "plus_six_temperature_label"
+                    font_size: 45
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+            
+            
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: 0.14285
+            
+             
+
+            BoxLayout:
+                orientation: 'horizontal'
+                Label:
+                    id: plus_sept_titre
+                    text: "plus_sept_titre"
+                    font_size: 37
+                    font_name: 'fonts/my_font.ttf'
+                    color: 22,22,22,0.73
+                    
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': 0.30, 'y': 0.5}
+                padding: 35, 15
+                
+                Image:
+                    id: plus_sept_icone_image
+                    source: 'plus_sept_icone_image'  
+                    size_hint: None, None
+                    size: 50, 50
+            
+
+            BoxLayout:
+                orientation: 'horizontal'
+                pos_hint: {'x': -0.037}
+                pos_hint: {'y': 10}
+                Label:
+                    id: plus_sept_temperature_label
+                    text: "plus_sept_temperature_label"
+                    font_size: 45
+                    font_name: 'fonts/my_font.ttf'
+                    color: 1,1,1,1
+            
+            
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: 0.1
