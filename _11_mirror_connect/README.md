@@ -18,7 +18,7 @@ Bien que le projet soit fonctionnel, il est important de noter que des améliora
 
 -------------------------------------
 ## Matériels ##
-
+ 
 * Plateforme centrale : Raspberry Pi 4, qui alimente l'ensemble du système.
 * Support visuel : Un miroir, servant d'interface pour afficher les données météorologiques.
 * Structure personnalisée : J'ai conçu une structure en bois sur mesure pour maintenir le miroir en place, malgré son origine prévue pour un écran plus grand.
