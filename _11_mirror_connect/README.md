@@ -27,8 +27,8 @@ Bien que le projet soit fonctionnel, il est important de noter que des améliora
 
 -------------------------------------
 
-## Schémas ## 
- 
+## Schémas ##
+
 <img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_11_mirror_connect/images/_11_mirror_connect.png" style="width: 300px"/>
 
 -------------------------------------
