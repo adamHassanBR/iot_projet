@@ -27,8 +27,7 @@ Intégration à l'Environnement HomeKit apple de led qui décore et éclaire mon
 
 ### 1
 
-<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_14_miror_led/images/1.jpg" style="width: 300px"/>
-
+<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_14_miror_led/images/1.png" style="width: 300px"/>
 ### 2
 
-<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_14_miror_led/images/2.jpg" style="width: 300px"/>
+<img src="https://raw.githubusercontent.com/adamHassanBR/iot_projet/main/_14_miror_led/images/2.png" style="width: 300px"/>
