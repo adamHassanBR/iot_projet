@@ -2,7 +2,7 @@ import requests
 from api.date_time import dateTime
 
 class weather:
-    api_key = "xxxxx"
+    api_key = "8c023fd6de124219ba390348232907"
     city = "Noisy-Le-Grand"
     url = f"http://api.weatherapi.com/v1/forecast.json?key={api_key}&q={city}&days=1&aqi=no&alerts=no"
 

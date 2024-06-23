@@ -1,3 +1,5 @@
+
+#scp -r /Users/adam_hassan/Desktop/pro/PROJET/iot_projet/ pi@192.168.1.39:/home/pi-hub/Desktop 
 import os
 os.environ['KIVY_IMAGE'] = 'sdl2'
 import time

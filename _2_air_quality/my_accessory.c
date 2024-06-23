@@ -15,13 +15,16 @@ homekit_characteristic_t cha_name_temperature = HOMEKIT_CHARACTERISTIC_(NAME, "T
 homekit_characteristic_t cha_humidity  = HOMEKIT_CHARACTERISTIC_(CURRENT_RELATIVE_HUMIDITY, 0);
 homekit_characteristic_t cha_name_humidity = HOMEKIT_CHARACTERISTIC_(NAME, "humidity Sensor");
 
+homekit_characteristic_t cha_switch_on = HOMEKIT_CHARACTERISTIC_(ON, false);
+homekit_characteristic_t cha_name = HOMEKIT_CHARACTERISTIC_(NAME, "Switch");
+
 homekit_accessory_t *accessories[] = 
 {
     HOMEKIT_ACCESSORY(.id=1, .category=homekit_accessory_category_sensor, .services=(homekit_service_t*[]) 
     {
         HOMEKIT_SERVICE(ACCESSORY_INFORMATION, .characteristics=(homekit_characteristic_t*[]) 
         {
-            HOMEKIT_CHARACTERISTIC(NAME, "Envorinement Sensor"),
+            HOMEKIT_CHARACTERISTIC(NAME, "Capteur d'environnement"),
             HOMEKIT_CHARACTERISTIC(MANUFACTURER, "Hassan Adam"),
             HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "0123456"),
             HOMEKIT_CHARACTERISTIC(MODEL, "ESP8266/ESP32"),
@@ -40,6 +43,13 @@ homekit_accessory_t *accessories[] =
             HOMEKIT_CHARACTERISTIC(NAME, "Humidity Sensor"),
             &cha_humidity,
             &cha_name_humidity,
+            NULL
+        }),
+        HOMEKIT_SERVICE(SWITCH, .characteristics=(homekit_characteristic_t*[]) 
+        {
+            HOMEKIT_CHARACTERISTIC(NAME, "Humidity Sensor"),
+            &cha_switch_on,
+			      &cha_name,
             NULL
         }),
         NULL

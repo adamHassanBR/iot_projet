@@ -71,7 +71,7 @@ void my_homekit_loop() {
   if (t > next_heap_millis) {
     // show heap info every 5 seconds
     next_heap_millis = t + 5 * 1000;
-    LOG_D("Free heap: %d, HomeKit clients: %d",
+    LOG_D("Free heap: %d, HomeKit clients: %d", 
         ESP.getFreeHeap(), arduino_homekit_connected_clients_count());
 
   }

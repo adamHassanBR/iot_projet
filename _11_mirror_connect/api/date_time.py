@@ -2,7 +2,7 @@ import requests
 from datetime import datetime
 import time
 class dateTime:
-    api_key = "xxxxx"
+    api_key = "J0RVXA0SM493"
     location = "Europe/Paris"
     url = f"http://api.timezonedb.com/v2.1/get-time-zone?key={api_key}&format=json&by=zone&zone={location}"
 
